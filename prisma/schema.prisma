@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model loans {
+  id             String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id        String    @db.VarChar(255)
+  mrp            Int
+  dp             Int
+  vehicle_year   Int
+  police_number  String    @db.VarChar(50)
+  machine_number String    @db.VarChar(100)
+  status         String    @default("submitted") @db.VarChar(20)
+  created_at     DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime? @default(now()) @db.Timestamptz(6)
+
+  @@index([status], map: "idx_loans_status")
+  @@index([user_id], map: "idx_loans_user_id")
+  @@index([user_id, police_number], map: "idx_loans_user_id_police_number")
+}

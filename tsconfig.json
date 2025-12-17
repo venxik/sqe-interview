@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@api/*": ["api/*"],
+      "@controllers/*": ["api/controllers/*"],
+      "@middleware/*": ["api/middleware/*"],
+      "@services": ["services"],
+      "@services/*": ["services/*"],
+      "@database/*": ["database/*"],
+      "@repositories": ["database/repositories"],
+      "@repositories/*": ["database/repositories/*"],
+      "@shared/*": ["shared/*"],
+      "@constants/*": ["shared/constants/*"],
+      "@errors/*": ["shared/errors/*"],
+      "@loan-types/*": ["shared/types/*"],
+      "@mappers": ["mappers"],
+      "@mappers/*": ["mappers/*"],
+      "@prisma/client": ["../generated/prisma"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
